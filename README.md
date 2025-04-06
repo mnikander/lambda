@@ -1,4 +1,4 @@
-# Lambda Language
+# Lambda Language Definition
 
 The syntax of a lambda language are outlined here.
 It is defined via its [grammar](grammar.md) and the type [signatures](signatures.md) of its in-built functions.
