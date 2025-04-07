@@ -1,12 +1,11 @@
-# Lambda Language Specification
+# A Lambda Language Specification
 
 The syntax of a lambda language is specified here.
 It uses Lisp-style symbolic expressions.
-
 The language is defined by:
-- a [grammar](grammar.md)
-- a set of [core](core.md) features and possible extensions
-- the type [signatures](signatures.md) of its in-built functions
+1. a [grammar](grammar.md)
+2. a set of [core](core.md) features and possible extensions
+3. the type [signatures](signatures.md) of its in-built functions
 
 ## Implementation Projects
 
