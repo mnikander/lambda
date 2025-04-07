@@ -54,7 +54,7 @@ For example to create a variable named `x` with the value `5` inside a specific 
 ```lisp
 (let x 5 (display x))
 ```
-This defines the variable x, inside of the expression (display x).
+This defines the variable x, inside of the expression `(display x)`.
 In C-code, this would be the same as writing:
 
 ```C
@@ -68,7 +68,7 @@ In a similar manner, we could create a function called `first` which takes two a
 ```lisp
 (let first (-> [a b] a) (first "hello" "world"))
 ```
-which evaluates to "hello".
+...which evaluates to "hello".
 
 ---
 **Copyright (c) 2025 Marco Nikander**
