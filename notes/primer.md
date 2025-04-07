@@ -61,7 +61,10 @@ In C-code, this would be the same as writing:
 {
     int x = 5;
     printf("%d", x);
-} // notice that these braces limit the scope of the variable definition
+}
+// notice that the entire block is enclosed in braces
+// which limit the scope of the variable definition x
+// to just this block
 ```
 
 In a similar manner, we could create a function called `first` which takes two arguments and simply returns the first one of those two, we can write:
