@@ -40,3 +40,7 @@ Note: Except for strings, whitespace is discarded during parsing (i.e. space, ta
 ## Sources
 - Lisp BNF: https://iamwilhelm.github.io/bnf-examples/lisp
 - ABNF: https://www.ietf.org/rfc/rfc5234.txt
+
+---
+**Copyright (c) 2025 Marco Nikander**
+

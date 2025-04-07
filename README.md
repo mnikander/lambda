@@ -44,3 +44,7 @@ The following repositories implement part of this lambda language:
 
 1. [Interpreter](https://github.com/mnikander/interpreter)
 2. [Transpiler](https://github.com/mnikander/transpiler)
+
+---
+**Copyright (c) 2025 Marco Nikander**
+

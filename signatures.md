@@ -92,3 +92,7 @@
 | **Generics**                 |                              |                                                      |                                  |                      | **TODO** |
 | **Memory**                   |                              |                                                      |                                  |                      | **TODO** |
 |                              |                              |                                                      |                                  |                      | |
+
+---
+**Copyright (c) 2025 Marco Nikander**
+
