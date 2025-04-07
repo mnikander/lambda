@@ -58,6 +58,7 @@ This defines the variable x, inside of the expression `(display x)`.
 In C-code, this would be the same as writing:
 
 ```C
+// equivalent code in C
 {
     int x = 5;
     printf("%d", x);
