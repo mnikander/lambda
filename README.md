@@ -1,11 +1,12 @@
-# Lambda Language Definition
+# Lambda Language Specification
 
-The syntax of a lambda language are outlined here.
+The syntax of an anonymous lambda language is outlined here.
 It is defined via its [grammar](grammar.md) and the type [signatures](signatures.md) of its in-built functions.
 Design decisions are documented in a [decision log](decisions.md).
 
-The grammar uses Lisp-style symbolic expressions so that the syntax is homogeneous and easy to parse.
 The language consists of a core feature set and a number of possible extensions.
+The grammar uses Lisp-style symbolic expressions.
+This makes the syntax homogeneous and easy to parse.
 
 ## Core Features
 
