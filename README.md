@@ -2,15 +2,16 @@
 
 The syntax of an anonymous lambda language is outlined here.
 It is defined via its [grammar](grammar.md) and the type [signatures](signatures.md) of its in-built functions.
-Design decisions are documented in a [decision log](decisions.md).
-
-The language consists of a core feature set and a number of possible extensions.
 The grammar uses Lisp-style symbolic expressions.
 This makes the syntax homogeneous and easy to parse.
+The language consists of a core feature set and a number of possible extensions.
+
+Design decisions are documented in a [decision log](decisions.md).
+A [primer](notes/primer.md) on symbolic expressions is included in the notes.
 
 ## Core Features
 
-The core feature set of the language is deliberately kept small, to keep the implementation effort within reasonable bounds:
+The core feature set of the language is deliberately kept small, to keep the implementation effort in reasonable bounds:
 
 1. Config to run and debug the toolchain in an IDE
 2. Unit testing from expression to result
