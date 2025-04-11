@@ -2,11 +2,13 @@
 
 The syntax of a lambda language is specified here.
 It uses Lisp-style symbolic expressions.
+The language consists of a Core feature set and a number of optional Extensions.
 The language is defined by:
 1. a [grammar](grammar.md)
 2. a set of [core](core.md) features
-3. a set of [possible extensions](extensions.md)
-4. the type [signatures](signatures.md) of its in-built functions
+3. the type [signatures](signatures.md) of its in-built functions
+
+The table of type signatures lists the Core functions as well as the functions for language Extensions.
 
 ## Implementation Projects
 
