@@ -3,14 +3,14 @@
 | name                         | symbols                      | example                                              | inputs                           | outputs              | comments |
 | :---                         | :---                         | :---                                                 | :---                             | :---                 | :--- |
 |                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Arithmetic and Logic** |                            |                                                      |                                  |                      | |
+| **[core](core.md) Arithmetic and Logic** |                  |                                                      |                                  |                      | |
 | Equality, Inequality         | `==` `!=`                    | `(== a b)`                                           | T, T                             | Boolean              | |
 | Arithmetic                   | `+` `-` `*` `/` `%` `^`      | `(+ a b)`                                            | (ensure T Number), (ensure T Number) | Number           | |
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | (ensure T Number), (ensure T Number) | Boolean          | |
 | Logical                      | `&` `\|` | `(& a b)`         | Boolean, Boolean                                     | Boolean                          |                      | |
 | Negation                     |  `!` | `(! a b)`             | Boolean                                              | Boolean                          |                      | |
 |                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Control Flow** |                              |                                                      |                                  |                      | |
+| **[core](core.md) Control Flow** |                          |                                                      |                                  |                      | |
 | Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
 | Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
@@ -45,7 +45,7 @@
 | At                           | `at`                         |                                                      | Integer, (Tuple T0 ... Tn)       | (Result Tx)          | Checks bounds, returns error if out-of-bounds |
 | Destructuring / let-binding  |                              |                                                      |                                  |                      | **TODO** should I overload `let` for this? |
 |                              |                              |                                                      |                                  |                      | |
-| **Array**                    |                              |                                                      |                                  |                      | |
+| **Array / Vector**           |                              |                                                      |                                  |                      | |
 | Constructor                  | `array`                      | `(array [1 2 3 4])`                                  |                                  |                      | Static array, with a fixed value type and fixed size |
 | Get (?)                      | `get`                        | `(get 0 (array [1 2 4 8]))`                          | Integer, (Array T N)             |                      | Direct access, no bounds-checking. **TODO** Can I secure this with dependent type information? Should I clamp the index access? Or should I just allow direct unchecked access for maximum performance? |
 | At                           | `at`                         | `(at 0 (array [1 2 4 8]))`                           |                                  | (Result T)           | Checks bounds, returns error if out-of-bounds |
