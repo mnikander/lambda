@@ -18,6 +18,9 @@
 | Lambda functions             | `lambda` or `->`             | `(lambda [a b] (+ 1 (+ a b))`                        | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda` and `->` are identical, it is a matter of preference |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
 |                              |                              |                                                      |                                  |                      | |
+| **Enhanced Functions**       |                              |                                                      |                                  |                      | |
+| Variadic lambda functions    | `...`                        | `(let sum (lambda [a ...rest] (foldl + a rest) (sum 1 2 4 8 16))` | T...                | (List T)             | |
+|                              |                              |                                                      |                                  |                      | |
 | **Primitive IO**             |                              |                                                      |                                  |                      | |
 | Display / print              | `display`                    | `(display 42)`                                       | T                                | Unit (?)             | |
 |                              |                              |                                                      |                                  |                      | |
