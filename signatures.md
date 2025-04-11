@@ -18,15 +18,15 @@
 | Lambda functions             | `lambda` or `->`             | `(lambda [a b] (+ 1 (+ a b))`                        | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda` and `->` are identical, it is a matter of preference |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
 |                              |                              |                                                      |                                  |                      | |
-| **Enhanced Functions**       |                              |                                                      |                                  |                      | |
-| Variadic lambda functions    | `...`                        | `(let sum (lambda [a ...rest] (foldl + a rest) (sum 1 2 4 8 16))` | T...                | (List T)             | |
-|                              |                              |                                                      |                                  |                      | |
 | **Primitive IO**             |                              |                                                      |                                  |                      | |
 | Display / print              | `display`                    | `(display 42)`                                       | T                                | Unit (?)             | |
 |                              |                              |                                                      |                                  |                      | |
 | **Enhanced Control Flow**    |                              |                                                      |                                  |                      | |
 | Conditional                  |  `conditional`               | `(conditional [(> 1 0) "good"] [(<= 1 0) "broken"])` | [Boolean, T0] ... [Boolean, Tn]  | (Variant T0 ... Tn)  | lisp-style conditional expression, can be used to imitate pattern-matching and switch-case statements |
 | Iteration                    | `until`                      | `(until 0 (lambda x (== x 10)) (lambda (+ x 1)))`    | (Tuple T0 ... Tn), (Tuple T0 ... Tn)→Boolean, (Tuple T0 ... Tn)→(Tuple T0 ... Tn) | (Tuple T0 ... Tn) | Until the input tuple satisfies a predicate, iteratively update it by applying a projection to it. Once the condition is satisfied, return the final tuple. |
+|                              |                              |                                                      |                                  |                      | |
+| **Enhanced Functions**       |                              |                                                      |                                  |                      | |
+| Variadic lambda functions    | `...`                        | `(let sum (lambda [a ...rest] (foldl + a rest) (sum 1 2 4 8 16))` | T...                | (List T)             | |
 |                              |                              |                                                      |                                  |                      | |
 | **Imperative**               |                              |                                                      |                                  |                      | |
 | Sequential block             | `do`                         | `(until expression_0 ... expression_n)`              | T0 ... Tn                        | Tn                   | evaluate a series of expressions in order
