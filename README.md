@@ -19,7 +19,7 @@ The following repositories implement part of this lambda language:
 
 ## Further Reading
 - design decisions are documented in a [decision log](decisions.md)
-- a [primer](notes/primer.md) on symbolic expressions
+- [introduction to symbolic expressions](resources/symbolic_expression_intro.md)
 
 ---
 **Copyright (c) 2025 Marco Nikander**
