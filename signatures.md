@@ -35,7 +35,8 @@
 | Definition                   | `define`                     | `(define x 5)`                                       | Identifier, Expr                 | Unit (?)             | |
 |                              |                              |                                                      |                                  |                      | |
 | **List**                     |                              |                                                      |                                  |                      | **TODO** Should the list be homogeneous or heterogeneous? I need one homogeneous and one heterogeneous datatype (list, tuple, array) Maybe an inbuilt heterogeneous List is the best foundation |
-| List constructor             | `list`                       |                                                      |                                  |                      | like `cons` in Scheme |
+| Pair                         | `:`                          | `(: "first" "second")`                               |                                  |                      | like `cons` in Scheme |
+| List constructor             | `list`                       | `(list 1 2 3 4)` or `(list [1 2 3 4])`               |                                  |                      | would require variadic functions or an inbuilt notation for tuples / vectors |
 | Get first element of list    | `head`                       |                                                      |                                  |                      | like `car` in Scheme |
 | Get rest of list             | `tail`                       |                                                      |                                  |                      | like `cdr` in Scheme |
 | Check if a list is empty     | `empty`                      |                                                      |                                  |                      | like `null?` in Scheme |
@@ -68,8 +69,8 @@
 | Function overloading         | `overload`                   | `(overload add [I32 add_i32] [F32 add_fl])`          | Identifier, [T0 Function], ..., [Tn Function] | Expr    | similar to a let-binding? |
 |                              |                              |                                                      |                                  |                      | |
 | **Types**                    |                              |                                                      |                                  |                      | |
-| Type annotation              | `:`                          | `(: I16 5)`                                          |                                  |                      | |
-| _... Type annotation (cont.)_|                              | `(: (Function [I32 I32] I32) (lambda [a b] a))`      |                                  |                      | |
+| Type annotation              | `:`                          | `let ^{(: tag I16)) x 5 (display 5)`                 |                                  |                      | annotation is applied to the next symbol, like in Clojure |
+| _... Type annotation (cont.)_|                              | `^{(: tag (Function [I32 I32] I32))} (lambda [a b] a)` |                                  |                      | |
 | Type retrieval               | `typeof`                     | `(typeof (+ 5 5))`                                   |                                  |                      | |
 | Memory size of type          | `sizeof`                     | `(sizeof I32)`                                       |                                  |                      | |
 | Linear type                  | `Linear`                     | `(Linear I32)`                                       | T                                | (Linear T)           | Creates a linear type |
