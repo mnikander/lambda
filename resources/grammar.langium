@@ -16,12 +16,12 @@ List:
     '[' (entries+=Expression)* ']';
 
 Identifier:
-    value=(ID | '==' | '!=' | '+' | '-' | '*' | '/' | '%' | '^' | 'sqrt' |
-          '<' | '>' | '<=' | '>=' | '&' | '|' | '!' | '->' | 'lambda' |
-          'if' | 'conditional' | 'until' | 'do' | '|>' | '>>=' |
-          'display' | 'declare' | 'define' | ':' |
-          'List' | 'head' | 'tail' | 'Variant' | 'Tuple' | 'Array' |
-          'copy' | 'move' | 'lend'
+    value=(ID | '==' | '!=' | '+' | '-' | '*' | '/' | '%' |
+          '<' | '>' | '<=' | '>=' | '&' | '|' | '!' |
+          'if' | 'conditional' | 'until' |
+          '->' | 'fn' | 'lambda' | 'let' | '^' |
+          ':' | 'List' | 'head' | 'tail' | 'Variant' | 'Tuple' | 'Array' |
+          'display' | 'copy' | 'move' | 'lend'
           );
 
 NumberLiteral:
