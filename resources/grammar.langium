@@ -1,4 +1,4 @@
-grammar FirstLambda
+grammar Lambda
 
 entry Model:
     ast=Expression;
