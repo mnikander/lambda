@@ -2,18 +2,20 @@
 
 The core language features are:
 
-1. Config to run and debug the toolchain in an IDE
-2. Unit testing from expression to result
-3. Lexer
-4. Parser
-5. Output of integers and booleans
-6. Evaluation of a nested expression
-7. Arithmetic and Logic
-8. Control Flow
-9. Functions and Variables
+ 1. Config to run and debug the toolchain in an IDE
+ 2. Unit testing from expression to result
+ 3. Lexer
+ 4. Parser
+ 5. Rudimentary semantic analysis (see below)
+ 6. Evaluation of nested expressions
+ 7. Output of integers and booleans
+ 8. Arithmetic and Logic
+ 9. Control Flow
+10. Functions and Variables
 
-Items 1-6 contain the basic infrastructure and functionality for the interpreter or compiler.
-Items 7-9 contain the actual language features.
+Items 1-7 contain the basic infrastructure and functionality for the interpreter or compiler.
+The semantic analysis shall verify the arity of function calls and that identifiers are unique and defined before use.
+Items 8-10 contain the actual language keywords and built-in functions.
 More details on those language features can be found in the first few sections of the table of type [signatures](signatures.md).
 
 The core feature set of the language is deliberately kept small, to keep the implementation effort in reasonable bounds.
