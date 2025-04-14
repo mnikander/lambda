@@ -4,10 +4,10 @@ entry Model:
     ast=Expression;
 
 Expression:
-    value=(Atom | Call | List);
+    value=(Atom | Identifier | Call | List);
 
 Atom:
-    value=(Identifier | NumberLiteral | StringLiteral | TypeLiteral);
+    value=(NumberLiteral | StringLiteral | TypeLiteral);
 
 Call:
     '(' func=Expression (arguments+=Expression)* ')';
