@@ -15,7 +15,7 @@
 | Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
 | **[core](core.md) Functions and Variables** |                         |                                                      |                                  |                      | |
-| Lambda functions             | `lambda` or `->`             | `(lambda [a b] (+ 1 (+ a b))`                        | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda` and `->` are identical, it is a matter of preference |
+| Lambda functions             | `fn` or `lambda` or `->`     | `(fn [a b] (+ 1 (+ a b))`                            | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda`, `fn`, and `->` are identical, it is a matter of preference |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
 |                              |                              |                                                      |                                  |                      | |
 | **Runtime Environment**      |                              |                                                      |                                  |                      | |
