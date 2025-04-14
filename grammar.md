@@ -4,7 +4,7 @@ This grammar is written in Augmented Backus-Naur Form (ABNF).
 
 ```abnf
 expression      =  (atom / identifier / call / list) [comment]
-atom            =  number-literal / string-literal / type-literal
+atom            =  number-literal / boolean-literal / string-literal / type-literal
 call            =  "(" expression *expression ")"
 list            =  "[" *expression "]"
 ```
@@ -15,6 +15,7 @@ list            =  "[" *expression "]"
 comment         =  "#" *(character / q / qq)
 identifier      =  (special *special) / (letter *(letter / digit))
 number-literal  =  [sign] digit *digit ["." digit *digit]
+boolean-literal =  "True" / "False"
 string-literal  =  (q *(character / qq) q) / (qq *(character / q) qq)
 type-literal    =  "Type" / "Empty" / "Boolean" / "Byte" / "Ascii" /
                    "I8" / "I16" / "I32" / "I64" / "F32" / "F64"

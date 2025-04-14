@@ -7,7 +7,7 @@ Expression:
     value=(Atom | Identifier | Call | List);
 
 Atom:
-    value=(NumberLiteral | StringLiteral | TypeLiteral);
+    value=(NumberLiteral | BooleanLiteral | StringLiteral | TypeLiteral);
 
 Call:
     '(' func=Expression (arguments+=Expression)* ')';
@@ -26,6 +26,9 @@ Identifier:
 
 NumberLiteral:
     value=(INT | FLOAT);
+
+BooleanLiteral:
+    value=('True' | 'False');
 
 StringLiteral:
     value=STRING;
