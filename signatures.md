@@ -7,14 +7,14 @@
 | Equality, Inequality         | `==` `!=`                    | `(== a b)`                                           | T, T                             | Boolean              | |
 | Arithmetic                   | `+` `-` `*` `/` `%`          | `(+ a b)`                                            | (ensure T Number), (ensure T Number) | Number           | |
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | (ensure T Number), (ensure T Number) | Boolean          | |
-| Logical                      | `&` `\|` | `(& a b)`         | Boolean, Boolean                                     | Boolean                          |                      | |
-| Negation                     |  `!` | `(! a b)`             | Boolean                                              | Boolean                          |                      | |
+| Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
+| Negation                     |  `!`                         | `(! a b)`                                            | Boolean                          | Boolean              | |
 |                              |                              |                                                      |                                  |                      | |
 | **[core](core.md) Control Flow** |                          |                                                      |                                  |                      | |
 | Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
 | Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Functions and Variables** |                         |                                                      |                                  |                      | |
+| **[core](core.md) Functions and Variables** |               |                                                      |                                  |                      | |
 | Lambda functions             | `fn` or `lambda` or `->`     | `(fn [a b] (+ 1 (+ a b))`                            | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda`, `fn`, and `->` are identical, it is a matter of preference |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
 |                              |                              |                                                      |                                  |                      | |
