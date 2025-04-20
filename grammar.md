@@ -3,8 +3,8 @@
 This grammar is written in Augmented Backus-Naur Form (ABNF).
 
 ```abnf
-expression      =  (atom / identifier / call / list) [comment]
-atom            =  number-literal / boolean-literal / string-literal / type-literal
+expression      =  (atom / call / list) [comment]
+atom            =  identifier / number-literal / boolean-literal / string-literal / type-literal
 call            =  "(" expression *expression ")"
 list            =  "[" *expression "]"
 ```
