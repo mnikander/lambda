@@ -25,12 +25,12 @@ type-literal    =  "Type" / "Empty" / "Boolean" / "Byte" / "Ascii" /
 
 ```abnf
 character       =  letter / digit / parenthesis / special / space
-letter          =  "a" / ... / "z" / "A" / ... / "Z"
+letter          =  "_" / "a" / ... / "z" / "A" / ... / "Z"
 digit           =  "0" / ... / "9"
 sign            =  "+" / "-"
 parenthesis     =  "(" / ")" / "[" / "]" / "{" / "}"
 special         =  "." / "," / ":" / ";" / "!" / "?" / "<" / ">" / "@" / "#" / "$" /
-                   "+" / "-" / "*" / "/" / "%" / "=" / "&" / "|" / "_" / "^" / "~"
+                   "+" / "-" / "*" / "/" / "%" / "=" / "&" / "|" / "^" / "~"
 space           =   " " / "\t"
 q               =  `'`
 qq              =  `"`
