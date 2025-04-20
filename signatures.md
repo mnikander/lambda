@@ -5,8 +5,8 @@
 |                              |                              |                                                      |                                  |                      | |
 | **[core](core.md) Arithmetic and Logic** |                  |                                                      |                                  |                      | |
 | Equality, Inequality         | `==` `!=`                    | `(== a b)`                                           | T, T                             | Boolean              | |
-| Arithmetic                   | `+` `-` `*` `/` `%`          | `(+ a b)`                                            | (ensure T Number), (ensure T Number) | Number           | |
-| Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | (ensure T Number), (ensure T Number) | Boolean          | |
+| Arithmetic                   | `+` `-` `*` `/` `%`          | `(+ a b)`                                            | Number, Number                   | Number               | |
+| Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | Number, Number                   | Boolean              | |
 | Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
 | Negation                     |  `!`                         | `(! a b)`                                            | Boolean                          | Boolean              | |
 |                              |                              |                                                      |                                  |                      | |
