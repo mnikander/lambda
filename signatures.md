@@ -9,14 +9,12 @@
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | Number, Number                   | Boolean              | |
 | Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
 | Negation                     |  `!`                         | `(! a b)`                                            | Boolean                          | Boolean              | |
-|                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Control Flow** |                          |                                                      |                                  |                      | |
 | Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
-| Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Functions and Variable Binding** |        |                                                      |                                  |                      | |
-| Lambda functions             | `fn` or `lambda` or `->`     | `(fn [a b] (+ 1 (+ a b))`                            | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda`, `fn`, and `->` are identical, it is a matter of preference |
+| **[core](core.md) Functions and Variable Bindings** |       |                                                      |                                  |                      | |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
+| Lambda functions             | `fn` or `lambda` or `->`     | `(fn [a b] (+ 1 (+ a b))`                            | (List Identifier), Expr          | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda`, `fn`, and `->` are identical, it is a matter of preference |
+| Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
 | **Runtime Environment**      |                              |                                                      |                                  |                      | |
 | Display / print              | `display`                    | `(display 42)`                                       | T                                | Unit (?)             | for transpilers and compilers |
