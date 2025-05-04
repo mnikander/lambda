@@ -10,12 +10,11 @@ The core language features are:
  6. Evaluation of nested expressions
  7. Output of integers and booleans
  8. Arithmetic and Logic
- 9. Control Flow
-10. Functions and Variables
+ 9. Functions and Variable Bindings
 
 Items 1-7 contain the basic infrastructure and functionality for the interpreter or compiler.
-The semantic analysis shall verify the arity of function calls and that identifiers are unique and defined before use.
-Items 8-10 contain the actual language keywords and built-in functions.
+The semantic analysis must verify the arity of function calls and that identifiers are unique and defined before use.
+Items 8-9 contain the actual language keywords and built-in functions.
 More details on those language features can be found in the first few sections of the table of type [signatures](signatures.md).
 
 The core feature set of the language is deliberately kept small, to keep the implementation effort in reasonable bounds.
