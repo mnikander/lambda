@@ -15,8 +15,8 @@ Destructive update allow in-place updates for performance-critical code, while m
 
 This set of operations provides clear semantics, simplifies lifetime analysis, and (hopefully) allows lifetime annotations to be avoided altogether.
 The following sections explain each operation.
-Note that while code examples are provided, the syntax has not been finalized yet and is subject to change.
-Irrespective of the final syntax, these code examples illustrate the underlying concepts, however.
+Note that code examples are provided, but the syntax is not final and is subject to change.
+These code examples do illustrate the underlying concepts, however.
 
 ### Deep Copy
 
@@ -37,8 +37,9 @@ It avoids any and all issues with shared ownership of data.
 Creates an alias to an existing location in memory.
 This alias can only be used to read the data.
 A reference has a different _type_ than the data it is refering to, it is a pointer/reference type.
-As long as references to a particular location in memory exist, that memory location cannot be destructively moved or updated.
-This is not yet finalized, but references will probably be the default way in which data is passed around within the code, so that the keyword `reference` can be omitted when programming.
+As long as references to a particular location in memory exist, it is an error for that memory location to be destroyed, destructively moved, or destructively updated.
+
+References will _probably_ be the default way in which data is passed around within the code, so that the keyword `reference` can be omitted when programming.
 
 References can be created to data which is not stored in memory, such as inlined constants or functions which reside in the source-code.
 For primitive types such as integers, for example, data may actually be copied under the hood, since that is faster than creating and dereferencing a pointer.
@@ -78,11 +79,9 @@ After the move, the old symbol is no longer defined.
 
 Similar to move, it transfers the ownership of a location in memory from one symbol to another.
 While that memory location is being transfered to the new symbol, the data in that memory location is updated.
-A newly created symbol holds that updated data.
 Just as with destructive move, the old symbol is no longer defined.
-This allows in-place updates of large data-structures, though the modified data has a new name.
+This allows in-place updates of large data-structures, though the modified data is bound to a newly created symbol.
 Semantically and conceptually, this is consistent with the notion of immutable data, since the old symbol can no longer be used.
-
 
 ```
 (let x 5
