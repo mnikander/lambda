@@ -20,6 +20,8 @@ The following repositories implement part of this lambda language:
 ## Further Reading
 - design decisions are documented in a [decision log](decisions.md)
 - [introduction to symbolic expressions](resources/symbolic_expression_intro.md)
+- proposal to use [iteration instead of recursion](notes/iteration.md) in a purely functional way
+- proposal for a [memory model](notes/memory.md) without garbage collection, inspired by Rust
 
 ---
 **Copyright (c) 2025 Marco Nikander**
