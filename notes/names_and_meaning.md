@@ -40,3 +40,34 @@ Examples:
 ## 8. Type
 - using a name to refer to a type, not a value
 - typically has a compile-time meaning only
+
+
+# Another Perspective
+
+Another way of looking at it is to distinguish between references into the AST and references to memory.
+This covers most, but not all, of the cases outlined above.
+
+1. AST references
+- constants
+- functions
+- variable names
+
+2. Storage references
+- stack memory
+- heap memory
+
+Specifically namespaces/modules and types don't neatly fit into this scheme, though perhaps types can be fit into the AST references.
+
+From this perspective, an interesting question.
+Should objects in the AST, which are in the text and don't take up any dynamic memory, still support all the same operations as dynamic data located on the stack or heap?
+
+| Operation | AST | Storage |
+| --        | --  | --   |
+| Reference | X   |  X   |
+| Clone     |     |  X   |
+| Move      |     |  X   |
+| Destroy   |     |  X   |
+| Update    |     |  X   |
+
+---
+**Copyright (c) 2025 Marco Nikander**
