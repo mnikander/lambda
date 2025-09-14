@@ -5,10 +5,10 @@ Note that this grammar supports only unary functions, and three special forms: `
 
 ```abnf
 expression      =  (atom / call / lambda / let / if ) [comment]
-atom            =  identifier / number-literal / boolean-literal / string-literal
+atom            =  identifier / binding / number-literal / boolean-literal / string-literal
 call            =  "(" [sp]             expression sp expression               [sp] ")"
-lambda          =  "(" [sp] "lambda" sp identifier sp expression               [sp] ")"
-let             =  "(" [sp] "let"    sp identifier sp expression sp expression [sp] ")"
+lambda          =  "(" [sp] "lambda" sp binding    sp expression               [sp] ")"
+let             =  "(" [sp] "let"    sp binding    sp expression sp expression [sp] ")"
 if              =  "(" [sp] "if"     sp expression sp expression sp expression [sp] ")"
 ```
 
@@ -17,6 +17,7 @@ if              =  "(" [sp] "if"     sp expression sp expression sp expression [
 ```abnf
 comment         =  "#" *(character / q / qq)
 identifier      =  (special *special) / (letter *(letter / digit))
+binding         =  identifier
 number-literal  =  [sign] digit *digit ["." digit *digit]
 boolean-literal =  "True" / "False"
 string-literal  =  (q *(character / qq) q) / (qq *(character / q) qq)
