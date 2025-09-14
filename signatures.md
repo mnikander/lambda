@@ -6,9 +6,10 @@
 | **[core](core.md) Arithmetic and Logic** |                  |                                                      |                                  |                      | |
 | Equality, Inequality         | `==` `!=`                    | `(== a b)`                                           | T, T                             | Boolean              | |
 | Arithmetic                   | `+` `-` `*` `/` `%`          | `(+ a b)`                                            | Number, Number                   | Number               | |
+| Negative                     | `~`                          | `(~ a)`                                              | Number                           | Number               | |
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | Number, Number                   | Boolean              | |
 | Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
-| Negation                     | `!`                          | `(! a)`                                              | Boolean                          | Boolean              | |
+| Not                          | `!`                          | `(! a)`                                              | Boolean                          | Boolean              | |
 | Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
 |                              |                              |                                                      |                                  |                      | |
 | **[core](core.md) Functions and Variable Bindings** |       |                                                      |                                  |                      | |
