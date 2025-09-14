@@ -8,7 +8,7 @@
 | Arithmetic                   | `+` `-` `*` `/` `%`          | `(+ a b)`                                            | Number, Number                   | Number               | |
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | Number, Number                   | Boolean              | |
 | Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
-| Negation                     |  `!`                         | `(! a b)`                                            | Boolean                          | Boolean              | |
+| Negation                     | `!`                          | `(! a)`                                              | Boolean                          | Boolean              | |
 | Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
 |                              |                              |                                                      |                                  |                      | |
 | **[core](core.md) Functions and Variable Bindings** |       |                                                      |                                  |                      | |
