@@ -1,7 +1,8 @@
 # Lisp-Like Grammar
 
 This grammar is written in Augmented Backus-Naur Form (ABNF).
-Note that this grammar supports only unary functions, and three special forms: `lambda`, `let`, and `if`.
+Note that this grammar is expression-only, has three special forms: `lambda`, `let`, and `if` and supports only unary functions.
+Built-in functions, such as `+`, are treated like any other identifier.
 
 ```abnf
 expression      =  (atom / call / lambda / let / if ) [comment]
