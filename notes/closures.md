@@ -102,6 +102,8 @@ So we won't heap allocate unless the user says so explicitly, even for closures.
 
 ## Problematic Cases
 
+### An Inner Closure
+
 Say we again want to add an `offset`, which is a runtime value, a each element in an array.
 This time we do that a little differently, however:
 
@@ -133,6 +135,21 @@ However, the `(lambda a (lambda b (+ a b)))` is really just a placeholder for _a
 This case is relevant.
 By writing the closure on the outside, and only 'pure lambdas' on the inside, the lambdas stay _ambivalent_ about whether they are part of a simple function or part of a closure.
 Does the necessity of creating the closure on the outside, create fundamental problems for the language?
+
+### Are Inner Closures Everywhere?
+
+What about the example from before?
+```
+(map |+ offset| [0 1 2 3])
+```
+Here we are passing a closure into a function _call_.
+At least it's not in the function _body_, like it was in the example above.
+So do we allow closures in function calls, but forbid closures in function bodies?
+Note that this property would have to be enforced transitively.
+As soon as there is a closure somewhere we've poisoned the enclosing code and it can never be part of a function body.
+Perhaps that could be ok?
+Or would such a rule be a disaster waiting to happen?
+
 
 ---
 **Copyright (c) 2025 Marco Nikander**
