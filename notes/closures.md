@@ -99,5 +99,40 @@ The call stack is usually in cache, while heap data may or may not be in cache.
 Memory allocation on the heap (`malloc`) is also expensive.
 So we won't heap allocate unless the user says so explicitly, even for closures.
 
+
+## Problematic Cases
+
+Say we again want to add an `offset`, which is a runtime value, a each element in an array.
+This time we do that a little differently, however:
+
+```
+(let
+    addOffset
+    (lambda x |+ offset x|)
+    (map addOffset [0 1 2 3])
+)
+```
+
+Now we have a closure `|+ offset x|` inside of a lambda.
+This would probably force the outer `(lambda x ...)` to also be a closure, though we haven't even applied the argument to it.
+This breaks the idea that 'a lambda is just a lambda, the application of the arguments decides whether or not it's a closure'.
+So should the above code be forbidden?
+If so, what implications does that have?
+
+Rewriting it, so that the closure is on the outside, is easy enough:
+```
+(let
+    addOffset
+    |(lambda a (lambda b (+ a b))) offset|
+    (map addOffset [0 1 2 3])
+)
+```
+It's more verbose, but it does get the job done.
+Obviously, we could just have written `(map |+ offset| [0 1 2 3])` as before.
+However, the `(lambda a (lambda b (+ a b)))` is really just a placeholder for _any_ function which we might have.
+This case is relevant.
+By writing the closure on the outside, and only 'pure lambdas' on the inside, the lambdas stay _ambivalent_ about whether they are part of a simple function or part of a closure.
+Does the necessity of creating the closure on the outside, create fundamental problems for the language?
+
 ---
 **Copyright (c) 2025 Marco Nikander**
