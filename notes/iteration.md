@@ -64,14 +64,20 @@ S until(S state, C condition, U update) {
 ## Cycle
 
 The 'iterate until' combinator feels weird to use in practice.
-It is similar to a do-while loop, which is rare in most C++ codebases, example.
-Adding to the confusion even more, it has a stopping condition, rather than a condition which must be satisfied to keep going.
-This is the inverse of what most programmers are used to, with the `for` and `while` loops.
+It is similar to a do-while loop, which is rare in most C++ codebases, for example.
+Adding to the confusion, it has a stopping condition, rather than a condition to keep going.
+This is the inverse of what most programmers are used to, with `for` and `while` loops.
+We can build on the idea from the previous section, but stay closer to the for-loop.
 
-We can build on the idea from the previous section, in that we have state which we update over and over again.
-This time we will stay much closer to the for-loop, however.
-
-`(cycle state condition update)`
+```lisp
+(cycle state condition update)
+```
+A second really important question is: what do we return at the end?
+Do we return the last state for which the condition was successful, or do we return the current state once it has failed the check?
+This is similar to the distinction between while and do-while loops.
+The first case is a bit trickier to implement, and may be slower, because we have to store the previous state.
+We will take the second approach.
+The example from above, printing [0, 9] and then returning 10 could be implemented as:
 
 ```lisp
 (cycle 0
@@ -79,11 +85,14 @@ This time we will stay much closer to the for-loop, however.
        (lambda b (begin (print b) (+ 1 b) end)))
 ```
 
-A second really important question is: what do we return at the end?
-Do we return the last state for which the condition was successful, or do we return the current state once it has failed the check?
-This is similar to the distinction between while and do-while loops.
-The first case is a bit trickier to implement, and may be slower, because we have to store the previous state.
-The corresponding C++ is almost identical to the implementation for 'until'.
+Note that if we have partial function application we can also just write:
+```lisp
+(cycle 0
+       (< 10)
+       (lambda b (begin (print b) (+ 1 b) end)))
+```
+
+The C++ implementation of `cycle` is almost identical to the implementation for `until`.
 
 ```c++
 // apply the update function to the state repeatedly until the condition is met
@@ -95,5 +104,5 @@ S cycle(S state, C condition, U update) {
     return state;
 };
 ```
-The while loop clearly shows we are using a condition in the way most programmers are used to.
+The while-loop inside the implementation clearly shows we are using a condition in the way most programmers are used to.
 The implementation of 'until' inverts the condition, and is more similar to a termination condition for a recursion.
