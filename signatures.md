@@ -1,5 +1,7 @@
 # Type Signatures of the Built-In Functions
 
+Note that all functions support partial application.
+
 | name                         | symbols                      | example                                              | inputs                           | outputs              | comments |
 | :---                         | :---                         | :---                                                 | :---                             | :---                 | :--- |
 |                              |                              |                                                      |                                  |                      | |
@@ -10,11 +12,13 @@
 | Comparison                   | `<` `>` `<=` `>=`            | `(< a b)`                                            | Number, Number                   | Boolean              | |
 | Logical                      | `&` `\|`                     | `(& a b)`                                            | Boolean, Boolean                 | Boolean              | |
 | Not                          | `!`                          | `(! a)`                                              | Boolean                          | Boolean              | |
-| Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
 |                              |                              |                                                      |                                  |                      | |
-| **[core](core.md) Functions and Variable Bindings** |       |                                                      |                                  |                      | |
+| **[core](core.md) Special Forms** |                         |                                                      |                                  |                      | |
 | Let binding                  | `let`                        | `(let x 5 (display x))`                              | Identifier, Expr, Expr           | Expr                 | |
 | Lambda functions             | `lambda`, `fn`, or `->`      | `(lambda a (lambda b (+ a b)))`                      | Identifier, Expr                 | T0, ..., Tn → U      | creates and returns an anonymous function, note that `lambda`, `fn`, and `->` are identical, it is a matter of preference |
+| Branching                    | `if`                         | `(if true 42 0)`                                     | Boolean, T0, T1                  | (Variant T0 T1)      | ternary if-expression |
+|                              |                              |                                                      |                                  |                      | |
+| **[core](core.md) Recursion**|                              |                                                      |                                  |                      | |
 | Recursion via fix            | `fix`                        | `(fix (* x f(x (- x 1))) 5)`                         | (F,T)→T, T                       | T                    | fixed-point combinator **TODO** prototype this in the interpreter and transpiler |
 |                              |                              |                                                      |                                  |                      | |
 | **Runtime Environment**      |                              |                                                      |                                  |                      | |
