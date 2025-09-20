@@ -2,6 +2,7 @@
 
 The syntax of a lambda language is specified here.
 It uses Lisp-style symbolic expressions.
+All functions are unary, and partial application is allowed.
 The language consists of a Core feature set and a number of optional Extensions.
 The language is defined by:
 1. a [grammar](grammar.md)

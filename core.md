@@ -1,6 +1,6 @@
 # Core Features
 
-The core language features are:
+The language core encompasses the following:
 
  1. Config to run and debug the toolchain in an IDE
  2. Unit testing from expression to result
@@ -14,7 +14,7 @@ The core language features are:
 
 Items 1-7 contain the basic infrastructure and functionality for the interpreter or compiler.
 The semantic analysis must verify the arity of function calls and that identifiers are unique and defined before use.
-Items 8-9 contain the actual language keywords and built-in functions.
+Items 8-9 contain the special forms and built-in functions which make up the language.
 More details on those language features can be found in the first few sections of the table of type [signatures](signatures.md).
 
 The core feature set of the language is deliberately kept small, to keep the implementation effort in reasonable bounds.
