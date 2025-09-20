@@ -19,7 +19,6 @@
 |                              |                              |                                                      |                                  |                      | |
 | **Runtime Environment**      |                              |                                                      |                                  |                      | |
 | Display / print              | `display`                    | `(display 42)`                                       | T                                | Unit (?)             | for transpilers and compilers |
-| Help                         | `help`                       | `(help)`                                             | Unit                             | Unit                 | for interpreters, displays the list of available commands |
 |                              |                              |                                                      |                                  |                      | |
 | **Enhanced Control Flow**    |                              |                                                      |                                  |                      | |
 | Conditional                  |  `conditional`               | `(conditional [(> 1 0) "good"] [(<= 1 0) "broken"])` | [Boolean, T0] ... [Boolean, Tn]  | (Variant T0 ... Tn)  | lisp-style conditional expression, can be used to imitate pattern-matching and switch-case statements |
