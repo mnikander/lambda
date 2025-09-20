@@ -1,4 +1,4 @@
-# 'Iterate Until' combinator
+# Recursion and Iteration
 
 Structured programming requires three primitives to create the set of all control flows:
 - sequence (execute one block after another)
@@ -21,6 +21,9 @@ This is because for/while-loops are stateful operations.
 
 There are some ways to support iteration, even in a purely functional language.
 Algorithms such as _map_, _filter_, and _reduce_ can be provided as language primitives, and other algorithms can be expressed in terms of them.
+
+## 'Iterate Until' combinator
+
 Another possibility is the 'iterate until' combinator.
 The Haskell standard library contains this combinator.
 We will refer to this combinator as 'until', and give it the following form:
@@ -38,8 +41,8 @@ If we do allow an effectful function `print` which outputs numbers to the displa
 
 ```lisp
 (until 0
-       (-> i (== i 10))
-       (-> i (begin (print i) (+ i 1) end)))
+       (lambda a (== a 10))
+       (lambda b (begin (print b) (+ b 1) end)))
 ```
 
 If the language provides `until` as a primitive, all other iterative algorithms could be expressed in terms of `until`.
@@ -50,10 +53,47 @@ This primitive can be implemented in C++, for example, as follows:
 ```c++
 // apply the update function to the state repeatedly until the condition is met
 template <typename S, typename C, typename U>
-S until(S state, C condition, U update){
+S until(S state, C condition, U update) {
     while (condition(state) == false) {
         state = update(std::move(state));
     }
     return state;
 };
 ```
+
+## Cycle
+
+The 'iterate until' combinator feels weird to use in practice.
+It is similar to a do-while loop, which is rare in most C++ codebases, example.
+Adding to the confusion even more, it has a stopping condition, rather than a condition which must be satisfied to keep going.
+This is the inverse of what most programmers are used to, with the `for` and `while` loops.
+
+We can build on the idea from the previous section, in that we have state which we update over and over again.
+This time we will stay much closer to the for-loop, however.
+
+`(cycle state condition update)`
+
+```lisp
+(cycle 0
+       (lambda a (< a 10))
+       (lambda b (begin (print b) (+ 1 b) end)))
+```
+
+A second really important question is: what do we return at the end?
+Do we return the last state for which the condition was successful, or do we return the current state once it has failed the check?
+This is similar to the distinction between while and do-while loops.
+The first case is a bit trickier to implement, and may be slower, because we have to store the previous state.
+The corresponding C++ is almost identical to the implementation for 'until'.
+
+```c++
+// apply the update function to the state repeatedly until the condition is met
+template <typename S, typename C, typename U>
+S cycle(S state, C condition, U update) {
+    while (condition(state)) {
+        state = update(std::move(state));
+    }
+    return state;
+};
+```
+The while loop clearly shows we are using a condition in the way most programmers are used to.
+The implementation of 'until' inverts the condition, and is more similar to a termination condition for a recursion.
