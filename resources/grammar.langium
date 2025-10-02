@@ -1,27 +1,27 @@
 grammar Lambda
 
-entry Expression:
-    (Atom | Call | List);
+entry _Expression:
+    (_Atom | _Call | _List);
 
-Atom:
-    (Identifier | NumberLiteral | BooleanLiteral | StringLiteral);
+_Atom:
+    (_Identifier | _NumberLiteral | _BooleanLiteral | _StringLiteral);
 
-Call:
-    '(' func=Expression (arguments+=Expression)* ')';
+_Call:
+    '(' func=_Expression (arguments+=_Expression)* ')';
 
-List:
-    '[' (entries+=Expression)* ']';
+_List:
+    '[' (entries+=_Expression)* ']';
 
-Identifier:
+_Identifier:
     value=(ID | OP);
 
-NumberLiteral:
+_NumberLiteral:
     value=(INT | FLOAT);
 
-BooleanLiteral:
+_BooleanLiteral:
     value=('true' | 'false');
 
-StringLiteral:
+_StringLiteral:
     value=STRING;
 
 hidden terminal WS: /\s+/;
