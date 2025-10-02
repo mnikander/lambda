@@ -16,7 +16,7 @@ _If:
     '(' 'if' condition=_Expression then_br=_Expression else_br=_Expression ')';
 
 _Call:
-    '(' func=_Expression (arguments+=_Expression)* ')';
+    '(' func=_Expression arguments=_Expression ')';
 
 _List:
     '[' (entries+=_Expression)* ']';
