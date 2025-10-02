@@ -1,9 +1,6 @@
 grammar Lambda
 
-entry Model:
-    Expression;
-
-Expression:
+entry Expression:
     (Atom | Call | List);
 
 Atom:
