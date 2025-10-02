@@ -10,7 +10,7 @@ _Tail:
     _Atomic | _Complex;
 
 _Atomic:
-    (_Literal | _List | _Identifier | _Lambda | _Call | _Block);
+    (_Literal | _List | _Identifier | _UnaryLambda | _UnaryCall | _Block);
 
 _Complex:
     _If;
@@ -21,10 +21,10 @@ _Literal:
 _List:
     '[' (entries+=_Atomic)* ']';
 
-_Lambda:
+_UnaryLambda:
     '(' 'lambda' binding=_Identifier body=_Atomic ')';
 
-_Call:
+_UnaryCall:
     '(' func=_Atomic arguments=_Atomic ')';
 
 _If:
