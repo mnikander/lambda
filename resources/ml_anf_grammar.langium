@@ -53,6 +53,7 @@ terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 /* 
 An example of ANF written in ML-style code:
 
+
 {
     let adder =
     {
@@ -63,5 +64,30 @@ An example of ANF written in ML-style code:
     let answer = (apply adder) in
     answer
 }
+
+
+Here is a more sophisticated example, which show-cases the use of branching
+control flow, in the tail position of a sub-block:
+
+
+{
+    let adder =
+    {
+        let predicate = ((< 0) 1) in
+        if predicate then
+        {
+            let constant = 37 in
+            (+ constant)
+        }
+        else
+        {
+            (- 5)
+        }
+    } in
+    let apply  = (lambda f (f 5)) in
+    let answer = (apply adder) in
+    answer
+}
+
 
 */
