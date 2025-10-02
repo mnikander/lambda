@@ -4,7 +4,7 @@ entry Expression:
     (Atom | Call | List);
 
 Atom:
-    (Identifier | NumberLiteral | BooleanLiteral | StringLiteral | TypeLiteral);
+    (Identifier | NumberLiteral | BooleanLiteral | StringLiteral);
 
 Call:
     '(' func=Expression (arguments+=Expression)* ')';
@@ -23,9 +23,6 @@ BooleanLiteral:
 
 StringLiteral:
     value=STRING;
-
-TypeLiteral:
-    value=('Type' | 'Empty' | 'Unit' | 'Boolean' | 'Byte' | 'Ascii' | 'I8' | 'I16' | 'I32' | 'I64' | 'F32' | 'F64');
 
 hidden terminal WS: /\s+/;
 hidden terminal SL_COMMENT: /\#[^\n\r]*/;
