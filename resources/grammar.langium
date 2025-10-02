@@ -1,13 +1,13 @@
 grammar Lambda
 
 entry Model:
-    ast=Expression;
+    Expression;
 
 Expression:
-    value=(Atom | Call | List);
+    (Atom | Call | List);
 
 Atom:
-    value=(Identifier | NumberLiteral | BooleanLiteral | StringLiteral | TypeLiteral);
+    (Identifier | NumberLiteral | BooleanLiteral | StringLiteral | TypeLiteral);
 
 Call:
     '(' func=Expression (arguments+=Expression)* ')';
