@@ -1,4 +1,4 @@
-grammar A_Normal_Form
+grammar Inspired_by_ANF
 
 entry _Block:
     '{' (lines+=_Let)* tail=_Tail '}';
@@ -51,7 +51,11 @@ terminal FLOAT returns number: /[-+]?((\d+\.\d*)|(\d*\.\d+))/;
 terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 /* 
-An example of ANF written in ML-style code:
+An example of a language inspired by ML, Scheme, and ANF.
+The overall syntax is inspired by ML.
+Like ANF it forces control flow constructs to be in the tail position.
+ANF would require that everything is be decomposed into let-bindings with atomic expressions on the right hand side.
+Unlike ANF, this language it allows nesting of expressions, similar to Scheme.
 
 
 {
