@@ -61,7 +61,7 @@ Unlike ANF, this language it allows nesting of expressions, similar to Scheme.
         let constant = 37 in
         (+ constant)
     } in
-    let apply  = lambda f {(f 5)} in
+    let apply  = lambda f { (f 5) } in
     let answer = (apply adder) in
     answer
 }
@@ -74,8 +74,8 @@ control flow, in the tail position of a sub-block:
 {
     let adder =
     {
-        let predicate = ((< 0) 1) in
-        if predicate then
+        let condition = ((< 0) 1) in
+        if condition then
         {
             let constant = 37 in
             (+ constant)
@@ -85,7 +85,7 @@ control flow, in the tail position of a sub-block:
             (- 5)
         }
     } in
-    let apply  = lambda f {(f 5)} in
+    let apply  = lambda f { (f 5) } in
     let answer = (apply adder) in
     answer
 }
@@ -101,7 +101,7 @@ It can be compacted to:
         then { lambda x {x} }
         else { (- 5) }
     } in
-    let answer = (lambda f {(f 5)} adder) in
+    let answer = (lambda f { (f 5) } adder) in
     answer
 }
 

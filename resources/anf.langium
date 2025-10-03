@@ -60,7 +60,7 @@ An example of ANF written in ML-style code:
         let constant = 37 in
         + constant
     } in
-    let apply  = lambda f {f 5} in
+    let apply  = lambda f { f 5 } in
     let answer = apply adder in
     answer
 }
@@ -74,8 +74,8 @@ control flow, in the tail position of a sub-block:
     let adder =
     {
         let is_positive = < 0 in
-        let predicate   = is_positive 1 in
-        if predicate
+        let condition   = is_positive 1 in
+        if condition
         then
         {
             let constant = 37 in
@@ -86,41 +86,27 @@ control flow, in the tail position of a sub-block:
             - 5
         }
     } in
-    let apply  = lambda f {f 5} in
+    let apply  = lambda f { f 5 } in
     let answer = apply adder in
     answer
 }
 
 
-Note that the following example is INVALID code.
-It does satisfy the grammar, but the 'body' expression uses an undefined variable 'f'.
-When 'f' is undefined, the expression '(f 5)' is does not represent a Value.
-'f' is only introduced in the lambda in the subsequent line.
-
-{
-    let adder =
-    {
-        let constant = 37 in
-        + constant
-    } in
-    let body   = f 5 in
-    let apply  = lambda f {body} in
-    let answer = apply adder in
-    answer
-}
+It can be compacted to:
 
 
 {
     let adder  = {
         let is_positive = < 0 in
         let condition = is_positive 1 in
-        if condition then {+ 37} else {- 5}
+        if condition
+        then { + 37 }
+        else { - 5 }
     } in
-    let apply  = lambda f {f 5} in
+    let apply  = lambda f { f 5 } in
     let answer = apply adder in
     answer
 }
-
 
 
 */
