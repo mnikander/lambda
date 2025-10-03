@@ -1,3 +1,19 @@
+/*
+A-Normal Form
+
+    An example of an A-Normal Form (ANF) inspired by ML and Scheme.
+    ANF consists of blocks of zero or more let-bindings, followed by one mandatory expression.
+    That final expression in a block is called the 'tail'.
+    Let bindings can bind to literals, variables, blocks, unary lambda expressions, and unary function calls.
+    Blocks can be nested.
+    Control flow constructs such as if-then-else, loop, try-catch, perform-handle, are ONLY allowed in the tail position.
+    The resulting language is an A-Normal Form, with syntax that is a blend of ML-style let-bindings and nested blocks that can look like Scheme code.
+    All function definitions and function applications are unary, so they bind and apply exactly one argument.
+    No enclosing parentheses are needed, though if they are inside a block it may _appear_ as though parentheses are enclosing a function creation or application.
+    All functions are anonymous functions as in lambda calculus.
+
+ */
+
 grammar A_Normal_Form
 
 entry _Block:
@@ -51,9 +67,7 @@ terminal FLOAT returns number: /[-+]?((\d+\.\d*)|(\d*\.\d+))/;
 terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 /* 
-An example of an A-Normal Form inspired by ML and Scheme.
-The overall syntax is inspired by ML.
-
+Examples:
 
 (
     let adder =
@@ -78,16 +92,8 @@ The following example creates a multi-argument function using nested lambdas:
 )
 
 
-There is a big problem in this ANF notation: blocks allow circumventing the creation of let-bindings.
-This means that you can use nested curly braces to write Scheme-style code. :D
-This would run slower than the same code using let-bindings though, because new stack-frames are created all the time.
-Could this be hack be forbidden by having lambdas NOT open a new block?
-They do define new variables though, so how can it not be a block?
-The lambda body _must_ come after the binding, and the way to do that is to open a block.
-Should I just embrace that it's possible, and create an optimization pass which unrolls these nestings for better performance?
-If I do embrace it, I might as well drop one of the two parenthesis styles and use either '(' or '{' for blocks and functions alike.
-That approach does have some benefits.
-I may not have to distinguish between the ANF and the surface language at all then, because they are effectively the same.
+Interestingly, the nesting of blocks, where each block consists only of one expression without any prior let-bindings, results in code which looks exactly like Lisp/Scheme code.
+
 
 (
     let first  = lambda a ( lambda b (a) ) in
