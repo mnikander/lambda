@@ -145,4 +145,18 @@ It can be compacted to:
 )
 
 
+Or it can be compacted even further, a la Scheme:
+
+
+(
+    let adder =
+    (
+        if ((< 0) 1)
+        then ( + 37 )
+        else ( - 5 )
+    ) in
+    ((lambda f ( f 5 )) adder)
+)
+
+
 */
