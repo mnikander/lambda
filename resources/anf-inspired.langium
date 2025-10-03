@@ -22,7 +22,7 @@ _List:
     '[' (entries+=_Atomic)* ']';
 
 _UnaryLambda:
-    '(' 'lambda' binding=_Identifier body=_Atomic ')';
+    'lambda' binding=_Identifier body=_Block;
 
 _UnaryCall:
     '(' func=_Atomic arguments=_Atomic ')';
@@ -64,7 +64,7 @@ Unlike ANF, this language it allows nesting of expressions, similar to Scheme.
         let constant = 37 in
         (+ constant)
     } in
-    let apply  = (lambda f (f 5)) in
+    let apply  = lambda f {(f 5)} in
     let answer = (apply adder) in
     answer
 }
@@ -88,7 +88,7 @@ control flow, in the tail position of a sub-block:
             (- 5)
         }
     } in
-    let apply  = (lambda f (f 5)) in
+    let apply  = lambda f {(f 5)} in
     let answer = (apply adder) in
     answer
 }
