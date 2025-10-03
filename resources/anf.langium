@@ -25,7 +25,7 @@ _UnaryLambda:
     'lambda' binding=_Identifier body=_Block;
 
 _UnaryCall:
-    '('? func=_Primitive arguments=_Primitive ')'?;
+    func=_Primitive arguments=_Primitive;
 
 _If:
     'if' condition=_Primitive 'then' then_br=_Block 'else' else_br=_Block;
@@ -59,10 +59,10 @@ The overall syntax is inspired by ML.
     let adder =
     {
         let constant = 37 in
-        (+ constant)
+        {+ constant}
     } in
-    let apply  = lambda f { (f 5) } in
-    let answer = (apply adder) in
+    let apply  = lambda f { {f 5} } in
+    let answer = {apply adder} in
     answer
 }
 
@@ -71,9 +71,9 @@ The following example creates a multi-argument function using nested lambdas:
 
 
 {
-    let first   = lambda a {lambda b {a}} in
-    let partial = (first 1) in
-    let answer  = (partial 2) in
+    let first   = lambda a { lambda b {a} } in
+    let partial = first 1 in
+    let answer  = partial 2 in
     answer
 }
 
@@ -86,6 +86,8 @@ They do define new variables though, so how can it not be a block?
 The lambda body _must_ come after the binding, and the way to do that is to open a block.
 Should I just embrace that it's possible, and create an optimization pass which unrolls these nestings for better performance?
 If I do embrace it, I might as well drop one of the two parenthesis styles and use either '(' or '{' for blocks and functions alike.
+That approach does have some benefits.
+I may not have to distinguish between the ANF and the surface language at all then, because they are effectively the same.
 
 {
     let first  = lambda a { lambda b {a} } in
