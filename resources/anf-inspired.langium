@@ -25,7 +25,7 @@ _UnaryCall:
     '(' func=_Atomic arguments=_Atomic ')';
 
 _If:
-    'if' condition=_Atomic 'then' then_br=_Atomic 'else' else_br=_Atomic;
+    'if' condition=_Atomic 'then' then_br=_Block 'else' else_br=_Block;
 
 _Identifier:
     value=(ID | OP);
@@ -97,7 +97,9 @@ It can be compacted to:
 {
     let adder =
     {
-        if ((< 0) 1) then (+ 37) else (- 5)
+        if ((< 0) 1)
+        then { lambda x {x} }
+        else { (- 5) }
     } in
     let answer = (lambda f {(f 5)} adder) in
     answer

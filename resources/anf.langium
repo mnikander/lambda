@@ -28,7 +28,7 @@ _UnaryCall:
     func=_Primitive arguments=_Primitive;
 
 _If:
-    'if' condition=_Primitive 'then' then_br=_Primitive 'else' else_br=_Primitive;
+    'if' condition=_Primitive 'then' then_br=_Block 'else' else_br=_Block;
 
 _Identifier:
     value=(ID | OP);
