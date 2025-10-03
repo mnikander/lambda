@@ -1,10 +1,10 @@
 grammar Lambda
 
 entry _Expression:
-    (_Atom | _Lambda | _Let | _If | _Call | _List);
+    _Atom | _Lambda | _Let | _If | _Call | _List;
 
 _Atom:
-    (_Identifier | _NumberLiteral | _BooleanLiteral | _StringLiteral);
+    _Identifier | _NumberLiteral | _BooleanLiteral | _StringLiteral;
 
 _Lambda:
     '(' 'lambda' binding=_Identifier body=_Expression ')';

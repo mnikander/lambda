@@ -10,7 +10,7 @@ _Tail:
     _Atomic | _Complex;
 
 _Atomic:
-    (_Literal | _List | _Identifier | _UnaryLambda | _UnaryCall | _Block);
+    _Literal | _List | _Identifier | _UnaryLambda | _UnaryCall | _Block;
 
 _Complex:
     _If;
