@@ -112,4 +112,18 @@ When 'f' is undefined, the expression '(f 5)' is does not represent a Value.
     answer
 }
 
+
+{
+    let adder  = {
+        let is_positive = < 0 in
+        let condition = is_positive 1 in
+        if condition then {+ 37} else {- 5}
+    } in
+    let apply  = lambda f {f 5} in
+    let answer = apply adder in
+    answer
+}
+
+
+
 */
