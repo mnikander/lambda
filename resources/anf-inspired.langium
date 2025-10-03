@@ -94,4 +94,17 @@ control flow, in the tail position of a sub-block:
 }
 
 
+It can be compacted to:
+
+
+{
+    let adder =
+    {
+        if ((< 0) 1) then (+ 37) else (- 5)
+    } in
+    let answer = (lambda f {(f 5)} adder) in
+    answer
+}
+
+
 */
