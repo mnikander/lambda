@@ -20,16 +20,13 @@ entry _Block:
     '(' (lines+=_Let)* tail=_Tail ')';
 
 _Let:
-    'let' binding=_Identifier '=' value=_Atomic 'in';
+    'let' binding=_Identifier '=' value=(_Atomic | _Call) 'in';
 
 _Tail:
-    _Atomic | _Complex;
+    _Atomic | _Call  | _Complex;
 
 _Atomic:
-    _Literal | _Identifier | _Block | _Lambda | _Call;
-
-_Primitive:
-    _Literal | _Identifier | _Block;
+    _Literal | _Identifier | _Block | _Lambda;
 
 _Complex:
     _If;
@@ -41,10 +38,10 @@ _Lambda: // unary, define a function of one variable
     'lambda' binding=_Identifier body=_Block;
 
 _Call: // unary, apply one argument to a function
-    func=_Primitive argument=_Primitive;
+    func=_Atomic argument=_Atomic;
 
 _If:
-    'if' condition=_Primitive 'then' then_br=_Block 'else' else_br=_Block;
+    'if' condition=_Atomic 'then' then_br=_Block 'else' else_br=_Block;
 
 _Identifier:
     value=(ID | OP);
