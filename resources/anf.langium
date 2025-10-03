@@ -66,6 +66,17 @@ An example of ANF written in ML-style code:
 }
 
 
+The following example creates a multi-argument function using nested lambdas:
+    
+
+{
+    let first   = lambda a {lambda b {a}} in
+    let partial = first 1 in
+    let answer  = partial 2 in
+    answer
+}
+
+
 Here is a more sophisticated example, which show-cases the use of branching
 control flow, in the tail position of a sub-block:
 

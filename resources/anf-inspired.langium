@@ -67,6 +67,16 @@ Unlike ANF, this language it allows nesting of expressions, similar to Scheme.
 }
 
 
+The following example creates a multi-argument function using nested lambdas:
+
+
+{
+    let first   = lambda a {lambda b {a}} in
+    let answer  = ((first 1) 2) in
+    answer
+}
+
+
 Here is a more sophisticated example, which show-cases the use of branching
 control flow, in the tail position of a sub-block:
 
