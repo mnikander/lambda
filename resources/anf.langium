@@ -1,16 +1,19 @@
 /*
+
 A-Normal Form
 
-    An example of an A-Normal Form (ANF) inspired by ML and Scheme.
-    ANF consists of blocks of zero or more let-bindings, followed by one mandatory expression.
-    That final expression in a block is called the 'tail'.
-    Let bindings can bind to literals, variables, blocks, unary lambda expressions, and unary function calls.
-    Blocks can be nested.
-    Control flow constructs such as if-then-else, loop, try-catch, perform-handle, are ONLY allowed in the tail position.
-    The resulting language is an A-Normal Form, with syntax that is a blend of ML-style let-bindings and nested blocks that can look like Scheme code.
-    All function definitions and function applications are unary, so they bind and apply exactly one argument.
-    No enclosing parentheses are needed, though if they are inside a block it may _appear_ as though parentheses are enclosing a function creation or application.
-    All functions are anonymous functions as in lambda calculus.
+An example of an A-Normal Form (ANF) inspired by ML and Scheme. ANF consists of
+blocks of zero or more let-bindings, followed by one mandatory expression. That
+final expression in a block is called the 'tail'. Let bindings can bind to
+literals, variables, blocks, unary lambda expressions, and unary function
+calls. Blocks can be nested. Control flow constructs such as if-then-else,
+loop, try-catch, perform-handle, are ONLY allowed in the tail position. The
+resulting language is an A-Normal Form, with syntax that is a blend of ML-style
+let-bindings and nested blocks that can look like Scheme code. All function
+definitions and function applications are unary, so they bind and apply exactly
+one argument. No enclosing parentheses are needed, though if they are inside a
+block it may _appear_ as though parentheses are enclosing a function creation
+or application. All functions are anonymous functions as in lambda calculus.
 
  */
 
@@ -72,7 +75,7 @@ Examples:
         let constant = 37 in
         (+ constant)
     ) in
-    let apply  = lambda f ( (f 5) ) in
+    let apply  = lambda f (f 5) in
     let answer = (apply adder) in
     answer
 )
@@ -89,7 +92,9 @@ The following example creates a multi-argument function using nested lambdas:
 )
 
 
-Interestingly, the nesting of blocks, where each block consists only of one expression without any prior let-bindings, results in code which looks exactly like Lisp/Scheme code.
+Interestingly, the nesting of blocks, where each block consists only of one
+expression without any prior let-bindings, results in code which looks exactly
+like Lisp/Scheme code.
 
 
 (
