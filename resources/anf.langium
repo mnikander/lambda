@@ -25,7 +25,7 @@ _UnaryLambda:
     'lambda' binding=_Identifier body=_Block;
 
 _UnaryCall:
-    func=_Primitive arguments=_Primitive;
+    '('? func=_Primitive arguments=_Primitive ')'?;
 
 _If:
     'if' condition=_Primitive 'then' then_br=_Block 'else' else_br=_Block;
@@ -58,10 +58,10 @@ An example of ANF written in ML-style code:
     let adder =
     {
         let constant = 37 in
-        + constant
+        (+ constant)
     } in
-    let apply  = lambda f { f 5 } in
-    let answer = apply adder in
+    let apply  = lambda f { (f 5) } in
+    let answer = (apply adder) in
     answer
 }
 
@@ -71,8 +71,8 @@ The following example creates a multi-argument function using nested lambdas:
 
 {
     let first   = lambda a {lambda b {a}} in
-    let partial = first 1 in
-    let answer  = partial 2 in
+    let partial = (first 1) in
+    let answer  = (partial 2) in
     answer
 }
 
