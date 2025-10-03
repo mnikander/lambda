@@ -96,7 +96,8 @@ It can be compacted to:
 
 
 {
-    let adder  = {
+    let adder =
+    {
         let is_positive = < 0 in
         let condition = is_positive 1 in
         if condition
