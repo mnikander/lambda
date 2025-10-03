@@ -10,16 +10,13 @@ _Tail:
     _Atomic | _Complex;
 
 _Atomic:
-    _Literal | _List | _Identifier | _UnaryLambda | _UnaryCall | _Block;
+    _Literal | _Identifier | _UnaryLambda | _UnaryCall | _Block;
 
 _Complex:
     _If;
 
 _Literal:
     _NumberLiteral | _BooleanLiteral | _StringLiteral;
-
-_List:
-    '[' (entries+=_Atomic)* ']';
 
 _UnaryLambda:
     'lambda' binding=_Identifier body=_Block;
