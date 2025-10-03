@@ -23,16 +23,10 @@ _Let:
     'let' binding=_Identifier '=' value=(_Atomic | _Call) 'in';
 
 _Tail:
-    _Atomic | _Call  | _Complex;
+    _Atomic | _Call | _Complex;
 
 _Atomic:
-    _Literal | _Identifier | _Block | _Lambda;
-
-_Complex:
-    _If;
-
-_Literal:
-    _NumberLiteral | _BooleanLiteral | _StringLiteral;
+    _Literal | _Identifier | _Lambda | _Block;
 
 _Lambda: // unary, define a function of one variable
     'lambda' binding=_Identifier body=_Block;
@@ -40,17 +34,23 @@ _Lambda: // unary, define a function of one variable
 _Call: // unary, apply one argument to a function
     func=_Atomic argument=_Atomic;
 
+_Complex:
+    _If;
+
 _If:
     'if' condition=_Atomic 'then' then_br=_Block 'else' else_br=_Block;
 
 _Identifier:
     value=(ID | OP);
 
-_NumberLiteral:
-    value=(INT | FLOAT);
+_Literal:
+    _BooleanLiteral | _NumberLiteral | _StringLiteral;
 
 _BooleanLiteral:
     value=('true' | 'false');
+
+_NumberLiteral:
+    value=(INT | FLOAT);
 
 _StringLiteral:
     value=STRING;
