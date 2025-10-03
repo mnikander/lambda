@@ -71,7 +71,7 @@ The following example creates a multi-argument function using nested lambdas:
 
 
 {
-    let first   = lambda a {lambda b {a}} in
+    let first   = lambda a { lambda b {a} } in
     let answer  = ((first 1) 2) in
     answer
 }

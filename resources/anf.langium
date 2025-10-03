@@ -51,7 +51,8 @@ terminal FLOAT returns number: /[-+]?((\d+\.\d*)|(\d*\.\d+))/;
 terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 /* 
-An example of ANF written in ML-style code:
+An example of an A-Normal Form inspired by ML and Scheme.
+The overall syntax is inspired by ML.
 
 
 {
@@ -110,7 +111,7 @@ It can be compacted to:
     let adder =
     {
         let is_positive = < 0 in
-        let condition = is_positive 1 in
+        let condition   = is_positive 1 in
         if condition
         then { + 37 }
         else { - 5 }
