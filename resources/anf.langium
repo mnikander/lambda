@@ -25,10 +25,10 @@ _List:
     '[' (entries+=_Atomic)* ']';
 
 _UnaryLambda:
-    '(' 'lambda' binding=_Identifier body=_Primitive ')';
+    'lambda' binding=_Identifier body=_Block;
 
 _UnaryCall:
-    '(' func=_Primitive arguments=_Primitive ')';
+    func=_Primitive arguments=_Primitive;
 
 _If:
     'if' condition=_Primitive 'then' then_br=_Primitive 'else' else_br=_Primitive;
@@ -61,10 +61,10 @@ An example of ANF written in ML-style code:
     let adder =
     {
         let constant = 37 in
-        (+ constant)
+        + constant
     } in
-    let apply  = (lambda f {(f 5)}) in
-    let answer = (apply adder) in
+    let apply  = lambda f {f 5} in
+    let answer = apply adder in
     answer
 }
 
@@ -76,21 +76,21 @@ control flow, in the tail position of a sub-block:
 {
     let adder =
     {
-        let is_positive = (< 0) in
-        let predicate   = (is_positive 1) in
+        let is_positive = < 0 in
+        let predicate   = is_positive 1 in
         if predicate
         then
         {
             let constant = 37 in
-            (+ constant)
+            + constant
         }
         else
         {
-            (- 5)
+            - 5
         }
     } in
-    let apply  = (lambda f {(f 5)}) in
-    let answer = (apply adder) in
+    let apply  = lambda f {f 5} in
+    let answer = apply adder in
     answer
 }
 
@@ -104,11 +104,11 @@ When 'f' is undefined, the expression '(f 5)' is does not represent a Value.
     let adder =
     {
         let constant = 37 in
-        (+ constant)
+        + constant
     } in
-    let body   = (f 5) in
-    let apply  = (lambda f body) in
-    let answer = (apply adder) in
+    let body   = f 5 in
+    let apply  = lambda f {body} in
+    let answer = apply adder in
     answer
 }
 
