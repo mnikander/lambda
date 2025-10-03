@@ -1,7 +1,7 @@
 grammar A_Normal_Form
 
 entry _Block:
-    '{' (lines+=_Let)* tail=_Tail '}';
+    '(' (lines+=_Let)* tail=_Tail ')';
 
 _Let:
     'let' binding=_Identifier '=' value=_Atomic 'in';
@@ -55,27 +55,27 @@ An example of an A-Normal Form inspired by ML and Scheme.
 The overall syntax is inspired by ML.
 
 
-{
+(
     let adder =
-    {
+    (
         let constant = 37 in
-        {+ constant}
-    } in
-    let apply  = lambda f { {f 5} } in
-    let answer = {apply adder} in
+        (+ constant)
+    ) in
+    let apply  = lambda f ( (f 5) ) in
+    let answer = (apply adder) in
     answer
-}
+)
 
 
 The following example creates a multi-argument function using nested lambdas:
 
 
-{
-    let first   = lambda a { lambda b {a} } in
+(
+    let first   = lambda a ( lambda b (a) ) in
     let partial = first 1 in
     let answer  = partial 2 in
     answer
-}
+)
 
 
 There is a big problem in this ANF notation: blocks allow circumventing the creation of let-bindings.
@@ -89,54 +89,54 @@ If I do embrace it, I might as well drop one of the two parenthesis styles and u
 That approach does have some benefits.
 I may not have to distinguish between the ANF and the surface language at all then, because they are effectively the same.
 
-{
-    let first  = lambda a { lambda b {a} } in
-    {{first 1} 2}
-}
+(
+    let first  = lambda a ( lambda b (a) ) in
+    ((first 1) 2)
+)
 
 
 Here is a more sophisticated example, which show-cases the use of branching
 control flow, in the tail position of a sub-block:
 
 
-{
+(
     let adder =
-    {
+    (
         let is_positive = < 0 in
         let condition   = is_positive 1 in
         if condition
         then
-        {
+        (
             let constant = 37 in
             + constant
-        }
+        )
         else
-        {
+        (
             - 5
-        }
-    } in
-    let apply  = lambda f { f 5 } in
+        )
+    ) in
+    let apply  = lambda f ( f 5 ) in
     let answer = apply adder in
     answer
-}
+)
 
 
 It can be compacted to:
 
 
-{
+(
     let adder =
-    {
+    (
         let is_positive = < 0 in
         let condition   = is_positive 1 in
         if condition
-        then { + 37 }
-        else { - 5 }
-    } in
-    let apply  = lambda f { f 5 } in
+        then ( + 37 )
+        else ( - 5 )
+    ) in
+    let apply  = lambda f ( f 5 ) in
     let answer = apply adder in
     answer
-}
+)
 
 
 */
