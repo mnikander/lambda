@@ -26,7 +26,7 @@ _Tail:
     _Atomic | _Complex;
 
 _Atomic:
-    _Literal | _Identifier | _Block | _UnaryLambda | _UnaryCall;
+    _Literal | _Identifier | _Block | _Lambda | _Call;
 
 _Primitive:
     _Literal | _Identifier | _Block;
@@ -37,11 +37,11 @@ _Complex:
 _Literal:
     _NumberLiteral | _BooleanLiteral | _StringLiteral;
 
-_UnaryLambda:
+_Lambda: // unary, define a function of one variable
     'lambda' binding=_Identifier body=_Block;
 
-_UnaryCall:
-    func=_Primitive arguments=_Primitive;
+_Call: // unary, apply one argument to a function
+    func=_Primitive argument=_Primitive;
 
 _If:
     'if' condition=_Primitive 'then' then_br=_Block 'else' else_br=_Block;
