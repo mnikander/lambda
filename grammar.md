@@ -15,7 +15,7 @@ Note: the grammar is written in Augmented Backus-Naur Form (ABNF).
 block           =  "(" *let tail ")"
 let             =  "let" variable "=" atomic_or_call "in"
 lambda          =  "lambda" variable block
-if              =  "if" atomic "then" block "else" block
+if              =  "if" atomic_or_call "then" block "else" block
 tail            =  atomic_or_call / complex
 complex         =  if
 atomic_or_call  =  atomic [atomic]
