@@ -7,10 +7,10 @@ Built-in functions, such as `+`, are treated like any other identifier.
 ```abnf
 expression      =  (atom / call / lambda / let / if ) [comment]
 atom            =  identifier / binding / number-literal / boolean-literal / string-literal
-call            =  "(" [sp]             expression sp expression               [sp] ")"
-lambda          =  "(" [sp] "lambda" sp binding    sp expression               [sp] ")"
-let             =  "(" [sp] "let"    sp binding    sp expression sp expression [sp] ")"
-if              =  "(" [sp] "if"     sp expression sp expression sp expression [sp] ")"
+call            =  "(" [ws]             expression ws expression               [ws] ")"
+lambda          =  "(" [ws] "lambda" ws binding    ws expression               [ws] ")"
+let             =  "(" [ws] "let"    ws binding    ws expression ws expression [ws] ")"
+if              =  "(" [ws] "if"     ws expression ws expression ws expression [ws] ")"
 ```
 
 ## Comments, Identifiers, and Literals
@@ -22,7 +22,7 @@ binding         =  identifier
 number-literal  =  [sign] digit *digit ["." digit *digit]
 boolean-literal =  "True" / "False"
 string-literal  =  (q *(character / qq) q) / (qq *(character / q) qq)
-sp              =  (space / linebreak) *(space / linebreak)
+ws              =  (space / linebreak) *(space / linebreak)
 ```
 
 ## Characters and Digits
@@ -47,4 +47,3 @@ qq              =  `"`
 
 ---
 **Copyright (c) 2025 Marco Nikander**
-
