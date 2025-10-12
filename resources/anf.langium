@@ -20,31 +20,34 @@ or application. All functions are anonymous functions as in lambda calculus.
 grammar A_Normal_Form
 
 entry _Block:
-    '(' (lines+=_Let)* tail=_Tail ')';
+    '(' body=(_Let | _Tail) ')';
 
 _Let:
-    'let' binding=_Identifier '=' value=(_Atomic | _Call) 'in';
+    'let' binding=_Variable '=' value=(_Atomic | _Call) 'in' body=(_Let | _Tail);
+
+_Lambda: // unary, define a function of one variable
+    'lambda' binding=_Variable body=_Block;
+
+_Call: // unary, apply one argument to a function
+    func=_Atomic argument=_Atomic;
+
+_If:
+    'if' condition=_Atomic 'then' then_br=_Block 'else' else_br=_Block;
 
 _Tail:
     _Atomic | _Call | _Complex;
 
 _Atomic:
-    _Literal | _Identifier | _Lambda | _Block;
-
-_Lambda: // unary, define a function of one variable
-    'lambda' binding=_Identifier body=_Block;
-
-_Call: // unary, apply one argument to a function
-    func=_Atomic argument=_Atomic;
+    _Literal | _Reference | _Lambda | _Block;
 
 _Complex:
     _If;
 
-_If:
-    'if' condition=_Atomic 'then' then_br=_Block 'else' else_br=_Block;
+_Variable:
+    name=(ID | OP);
 
-_Identifier:
-    value=(ID | OP);
+_Reference:
+    target=(ID | OP);
 
 _Literal:
     _BooleanLiteral | _NumberLiteral | _StringLiteral;

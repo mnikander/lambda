@@ -12,14 +12,14 @@ Built-in functions, such as `+`, are treated like any other identifier.
 Note: the grammar is written in Augmented Backus-Naur Form (ABNF).
 
 ```abnf
-block           =  "(" *let tail ")"
-let             =  "let" variable "=" atomic_or_call "in"
-lambda          =  "lambda" variable block
-if              =  "if" atomic_or_call "then" block "else" block
+block           =  "(" let / tail ")"
+let             =  "let" variable "=" atomic_or_call "in" (let / tail)
 tail            =  atomic_or_call / complex
-complex         =  if
 atomic_or_call  =  atomic [atomic]
 atomic          =  literal / reference / lambda / block;
+lambda          =  "lambda" variable block
+if              =  "if" atomic_or_call "then" block "else" block
+complex         =  if
 ```
 
 ## Comments, Identifiers, and Literals
