@@ -13,12 +13,12 @@ Note: the grammar is written in Augmented Backus-Naur Form (ABNF).
 
 ```abnf
 block           =  "(" let / tail ")"
-let             =  "let" variable "=" atomic_or_call "in" (let / tail)
-tail            =  atomic_or_call / complex
-atomic_or_call  =  atomic [atomic]
+let             =  "let" variable "=" atomic-or-call "in" (let / tail)
+tail            =  atomic-or-call / complex
+atomic-or-call  =  atomic [atomic]
 atomic          =  literal / reference / lambda / block;
 lambda          =  "lambda" variable block
-if              =  "if" atomic_or_call "then" block "else" block
+if              =  "if" atomic-or-call "then" block "else" block
 complex         =  if
 ```
 
