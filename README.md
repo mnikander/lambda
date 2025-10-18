@@ -1,4 +1,4 @@
-# A Lambda Language Specification
+# Lambda Language Specification
 
 The syntax of a lambda language is specified here.
 It uses Lisp-style symbolic expressions.
@@ -15,8 +15,8 @@ The table of type signatures lists the Core functions as well as the functions f
 
 The following repositories implement part of this lambda language:
 
-1. [Interpreter](https://github.com/mnikander/interpreter)
-2. [Transpiler](https://github.com/mnikander/transpiler)
+1. [Interpreter](https://github.com/mnikander/interpreter) (work in progress)
+2. [Transpiler](https://github.com/mnikander/transpiler) (shelved, for now)
 
 ## Further Reading
 - design decisions are documented in a [decision log](decisions.md)
