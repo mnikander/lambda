@@ -15,7 +15,7 @@ The table of type signatures lists the Core functions as well as the functions f
 
 The following repositories implement part of this lambda language:
 
-1. [Interpreter](https://github.com/mnikander/interpreter) (work in progress)
+1. [Interpreter](https://github.com/mnikander/interpreter) (paused, for now)
 2. [Transpiler](https://github.com/mnikander/transpiler) (shelved, for now)
 
 ## Further Reading
